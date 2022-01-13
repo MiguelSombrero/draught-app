@@ -4,8 +4,8 @@ import Text from './Text';
 
 const DraughtItem = ({ draught }) => {
     return (
-      <View style={{ backgroundColor: 'white' }}>
-        <Text style={{ padding: 10 }} fontWeight='bold' >{draught.beverageType}</Text>
+      <View>
+        <Text style={{ padding: 10 }} >{draught.beverageType}</Text>
       </View>
     );
   };
