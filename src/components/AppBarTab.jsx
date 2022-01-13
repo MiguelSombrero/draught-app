@@ -5,7 +5,7 @@ import Text from './Text';
 const AppBarTab = ({ text }) => {
   return (
     <Pressable >
-      <Text fontWeight='bold' style={{ padding: 10, color: 'white' }} >{text}</Text>
+      <Text fontWeight='bold' color='textSecondary' style={{ padding: 10 }} >{text}</Text>
     </Pressable>
   );
 };

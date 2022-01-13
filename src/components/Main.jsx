@@ -1,10 +1,15 @@
 import React from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Route, Switch, Redirect } from 'react-router-native';
 import DraughtList from './DraughtList';
 import AppBar from './AppBar';
+import SignIn from './SignIn';
+
+import theme from '../theme';
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: theme.colors.mainBackground,
     flexGrow: 1,
     flexShrink: 1,
   },
@@ -14,8 +19,15 @@ const Main = () => {
   return (
     <View style={styles.container}>
       <AppBar />
-      <Text>Rate Repository Application</Text>
-      <DraughtList />
+      <Switch>
+        <Route path="/login" exact>
+          <SignIn />
+        </Route>
+        <Route path="/" exact>
+          <DraughtList />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
     </View>
   );
 };
