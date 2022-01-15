@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-native';
 import DraughtList from './DraughtList';
 import AppBar from './AppBar';
 import SignIn from './SignIn';
-
+import SignUp from './SignUp';
 import theme from '../theme';
 
 const styles = StyleSheet.create({
@@ -22,6 +22,9 @@ const Main = () => {
       <Switch>
         <Route path="/signin" exact>
           <SignIn />
+        </Route>
+        <Route path="/signup" exact>
+          <SignUp />
         </Route>
         <Route path="/" exact>
           <DraughtList />

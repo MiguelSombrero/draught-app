@@ -5,7 +5,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import FormikTextInput from './FormikTextInput';
 import Text from './Text';
-import useSignIn from '../hooks/useSignIn';
+import useUsers from '../hooks/useUsers';
 
 import theme from '../theme';
 
@@ -39,26 +39,32 @@ const validationSchema = yup.object().shape({
     .min(5, 'Password must be at least 5 characters')
     .max(29, 'Password must be less than 30 characters')
     .required('Password is required'),
+  name: yup
+    .string()
+    .min(2, 'Name must be at least 5 characters')
+    .max(29, 'Name must be less than 30 characters')
+    .required('Name is required'),
 });
 
-const SignInForm = ({ onSubmit }) => {
+const SignUpForm = ({ onSubmit }) => {
   return (
     <View style={styles.form}>
       <FormikTextInput style={styles.formElement} name="username" placeholder="username" />
       <FormikTextInput style={styles.formElement} name="password" placeholder="password" secureTextEntry/>
+      <FormikTextInput style={styles.formElement} name="name" placeholder="display name" />
       <Pressable style={styles.formElement} onPress={onSubmit}>
-        <Text>Sign In</Text>
+        <Text>Sign Up</Text>
       </Pressable>
     </View>
   );
 };
 
-const SignIn = () => {
-  const { user, signIn } = useSignIn();
+const SignUp = () => {
+  const { createUser } = useUsers();
 
   const onSubmit = async (values) => {
     try {
-      const response = await signIn(values);
+      await createUser(values);
     } catch (e) {
       console.log(e);
     }
@@ -70,9 +76,9 @@ const SignIn = () => {
       onSubmit={onSubmit}
       validationSchema={validationSchema}
     >
-      {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
+      {({ handleSubmit }) => <SignUpForm onSubmit={handleSubmit} />}
     </Formik>
   );
 };
 
-export default SignIn;
+export default SignUp;
