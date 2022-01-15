@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import FormikTextInput from './FormikTextInput';
 import Text from './Text';
+import { useResource } from '../hooks';
 
 import theme from '../theme';
 
@@ -59,8 +60,14 @@ const SignInForm = ({ onSubmit }) => {
 };
 
 const SignIn = () => {
-  const onSubmit = (values) => {
-    console.log(values);
+  const userService = useResource('/user');
+
+  const onSubmit = async (values) => {
+    try {
+      await userService.create(values);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
