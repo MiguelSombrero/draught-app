@@ -20,7 +20,7 @@ const Main = () => {
     <View style={styles.container}>
       <AppBar />
       <Switch>
-        <Route path="/login" exact>
+        <Route path="/signin" exact>
           <SignIn />
         </Route>
         <Route path="/" exact>
