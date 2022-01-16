@@ -7,7 +7,7 @@ class AuthStorage {
 
   async getLoggedUser() {
     const user = await SecureStore.getItemAsync(
-      `${this.namespace}:user`,
+      `${this.namespace}-user`,
     );
   
     return user ? JSON.parse(user) : {};
@@ -15,12 +15,12 @@ class AuthStorage {
 
   async setLoggedUser(user) {
     await SecureStore.setItemAsync(
-      `${this.namespace}:user`, JSON.stringify(user),
+      `${this.namespace}-user`, JSON.stringify(user),
     );
   }
 
   async removeLoggedUser() {
-    await SecureStore.deleteItemAsync(`${this.namespace}:user`);
+    await SecureStore.deleteItemAsync(`${this.namespace}-user`);
   }
 }
 

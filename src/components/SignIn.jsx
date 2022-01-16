@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Pressable, StyleSheet } from 'react-native';
+import { useHistory } from 'react-router-dom';
 import Constants from 'expo-constants';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -54,11 +55,13 @@ const SignInForm = ({ onSubmit }) => {
 };
 
 const SignIn = () => {
-  const { user, signIn } = useSignIn();
+  const { signIn } = useSignIn();
+  let history = useHistory();
 
   const onSubmit = async (values) => {
     try {
-      const response = await signIn(values);
+      await signIn(values);
+      history.push('/');
     } catch (e) {
       console.log(e);
     }

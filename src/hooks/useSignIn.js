@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import Constants from 'expo-constants';
-import AuthStorage from '../utils/authStorage';
+import useAuthStorage from '../hooks/useAuthStorage';
 
 const API_URI = Constants.manifest.extra.draughts_api_uri;
 
 const useSignIn = () => {
-  const [user, setUser] = useState();
+  const authStorage = useAuthStorage();
   const [loading, setLoading] = useState(false);
 
   const signIn = async ({ username, password }) => {
@@ -25,13 +25,10 @@ const useSignIn = () => {
     const json = await response.json();
 
     setLoading(false);
-    AuthStorage.setLoggedUser(json);
-
-    console.log("onko user:");
-    console.log(AuthStorage.getLoggedUser());
+    await authStorage.setLoggedUser(json);
   };
 
-  return { user, loading, signIn };
+  return { loading, signIn };
 };
 
 export default useSignIn;
