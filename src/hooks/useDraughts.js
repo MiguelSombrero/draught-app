@@ -1,16 +1,26 @@
 import { useState, useEffect } from 'react';
 import Constants from 'expo-constants';
+import useAuthStorage from '../hooks/useAuthStorage';
 
 const API_URI = Constants.manifest.extra.draughts_api_uri;
 
 const useDraughts = () => {
+  const authStorage = useAuthStorage();
   const [draughts, setDraughts] = useState();
   const [loading, setLoading] = useState(false);
 
   const fetchDraughts = async () => {
     setLoading(true);
 
-    const response = await fetch(`${API_URI}/draughts`);
+    const user = await authStorage.getLoggedUser();
+
+    const response = await fetch(`${API_URI}/draught`, {
+      headers: {
+        Accept: 'application/json',
+        Authorization: `bearer ${user.token}`,
+      },
+    });
+
     const json = await response.json();
 
     setLoading(false);
