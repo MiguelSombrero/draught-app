@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Pressable, StyleSheet } from 'react-native';
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import Constants from 'expo-constants';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -61,7 +61,7 @@ const SignIn = () => {
   const onSubmit = async (values) => {
     try {
       await signIn(values);
-      history.push('/');
+      history.push('/draughts');
     } catch (e) {
       console.log(e);
     }
