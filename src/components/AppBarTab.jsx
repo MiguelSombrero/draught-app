@@ -3,9 +3,9 @@ import { Pressable } from 'react-native';
 import Text from './Text';
 import { Link } from 'react-router-native';
 
-const AppBarTab = ({ text, to }) => {
+const AppBarTab = ({ text, to, onPress }) => {
   return (
-    <Pressable>
+    <Pressable onPress={onPress} >
       <Link to={to}>
         <Text fontWeight='bold' color='textSecondary' style={{ padding: 10 }} >{text}</Text>
       </Link>

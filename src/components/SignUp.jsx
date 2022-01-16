@@ -1,25 +1,28 @@
 import React from 'react';
-import { View, Pressable, StyleSheet } from 'react-native';
-import Constants from 'expo-constants';
+import { View, Button, StyleSheet } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import FormikTextInput from './FormikTextInput';
-import Text from './Text';
 import useUsers from '../hooks/useUsers';
 
 import theme from '../theme';
 
 const styles = StyleSheet.create({
-  form: {
-    paddingTop: Constants.statusBarHeight,
+  container: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: theme.colors.mainBackground,
-    padding: 8,
+    marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
   },
-  formElement: {
-    padding: 5,
-  }
 });
 
 const initialValues = {
@@ -48,13 +51,14 @@ const validationSchema = yup.object().shape({
 
 const SignUpForm = ({ onSubmit }) => {
   return (
-    <View style={styles.form}>
-      <FormikTextInput style={styles.formElement} name="username" placeholder="username" />
-      <FormikTextInput style={styles.formElement} name="password" placeholder="password" secureTextEntry/>
-      <FormikTextInput style={styles.formElement} name="name" placeholder="display name" />
-      <Pressable style={styles.formElement} onPress={onSubmit}>
-        <Text>Sign Up</Text>
-      </Pressable>
+    <View style={styles.container}>
+      <FormikTextInput name="username" placeholder="username" />
+      <FormikTextInput name="password" placeholder="password" secureTextEntry/>
+      <FormikTextInput name="name" placeholder="display name" />
+      <Button
+        onPress={onSubmit}
+        title="Sign Up"
+      />
     </View>
   );
 };

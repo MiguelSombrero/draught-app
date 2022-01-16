@@ -3,6 +3,7 @@ const theme = {
       textPrimary: '#24292e',
       textSecondary: '#586069',
       textTab: 'white',
+      textError: 'red',
       primary: '#0366d6',
       mainBackground: 'beige',
       tabBackground: '#24292e'
