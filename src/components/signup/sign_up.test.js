@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
-import SignUpContainer from '../../components/signup/SignUpContainer';
+import SignUpContainer from './SignUpContainer';
 
 describe('SignUp', () => {
   describe('SignUpContainer', () => {
-    it('calls function provided by onSubmit prop after pressing the Sign Up button', async () => {
+    it('calls onSubmit prop after pressing the Sign Up button with valid input', async () => {
       const onSubmit = jest.fn();
       const { getByTestId } = render(<SignUpContainer onSubmit={onSubmit} />);
       
@@ -21,6 +21,20 @@ describe('SignUp', () => {
           password: 'salainen',
           name: 'miika'
         });
+      });
+    });
+
+    it('does not call onSubmit prop after pressing the Sign Up button with invalid input', async () => {
+      const onSubmit = jest.fn();
+      const { getByTestId } = render(<SignUpContainer onSubmit={onSubmit} />);
+      
+      fireEvent.changeText(getByTestId('usernameField'), 's');
+      fireEvent.changeText(getByTestId('passwordField'), 'salainen');
+      fireEvent.changeText(getByTestId('nameField'), 'miika');
+      fireEvent.press(getByTestId('signUpButton'));
+      
+      await waitFor(() => {
+        expect(onSubmit).toHaveBeenCalledTimes(0);
       });
     });
   });
