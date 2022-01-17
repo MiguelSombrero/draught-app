@@ -4,7 +4,7 @@ import { Route, Switch, Redirect } from 'react-router-native';
 import DraughtList from './DraughtList';
 import AppBar from './AppBar';
 import SignIn from './SignIn';
-import SignUp from './SignUp';
+import SignUp from './signup/SignUp';
 import theme from '../theme';
 import FrontPage from './FrontPage';
 
