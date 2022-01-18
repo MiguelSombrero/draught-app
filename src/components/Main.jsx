@@ -7,6 +7,7 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import theme from '../theme';
 import FrontPage from './FrontPage';
+import AddDraught from './AddDraught';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,10 +29,10 @@ const Main = () => {
           <SignUp />
         </Route>
         <Route path="/draughts" exact>
-          <DraughtList />
+          <AddDraught />
         </Route>
         <Route path="/" exact>
-          <FrontPage />
+          <DraughtList />
         </Route>
         <Redirect to="/" />
       </Switch>

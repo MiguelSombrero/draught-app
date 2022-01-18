@@ -27,11 +27,32 @@ const useDraughts = () => {
     setDraughts(json);
   };
 
+  const addDraught = async (draught) => {
+    setLoading(true);
+
+    const user = await authStorage.getLoggedUser();
+
+    const response = await fetch(`${API_URI}/draught`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        Authorization: `bearer ${user.token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(draught),
+    });
+    
+    const json = await response.json();
+
+    setLoading(false);
+    setDraughts([ ...draughts, json ]);
+  };
+
   useEffect(() => {
     fetchDraughts();
   }, []);
 
-  return { draughts, loading, refetch: fetchDraughts };
+  return { draughts, loading, refetch: fetchDraughts, addDraught };
 };
 
 export default useDraughts;
