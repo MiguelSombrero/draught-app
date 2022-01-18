@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Route, Switch, Redirect } from 'react-router-native';
-import DraughtList from './DraughtList';
 import AppBar from './AppBar';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
@@ -32,7 +31,7 @@ const Main = () => {
           <AddDraught />
         </Route>
         <Route path="/" exact>
-          <DraughtList />
+          <FrontPage />
         </Route>
         <Redirect to="/" />
       </Switch>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Constants from 'expo-constants';
 import useAuthStorage from '../hooks/useAuthStorage';
 
@@ -48,11 +48,7 @@ const useDraughts = () => {
     setDraughts([ ...draughts, json ]);
   };
 
-  useEffect(() => {
-    fetchDraughts();
-  }, []);
-
-  return { draughts, loading, refetch: fetchDraughts, addDraught };
+  return { draughts, loading, fetchDraughts, addDraught };
 };
 
 export default useDraughts;
