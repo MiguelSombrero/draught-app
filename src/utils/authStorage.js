@@ -9,8 +9,8 @@ class AuthStorage {
     const user = await SecureStore.getItemAsync(
       `${this.namespace}-user`,
     );
-  
-    return user ? JSON.parse(user) : {};
+
+    return user ? JSON.parse(user) : null;
   }
 
   async setLoggedUser(user) {

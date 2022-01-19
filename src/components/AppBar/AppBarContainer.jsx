@@ -24,7 +24,7 @@ const AppBarContainer = ({ handleLogout, user }) => {
       <ScrollView horizontal>
         <AppBarTab text='Home' to='/' />
 
-        {true &&
+        {user &&
           <>
             <AppBarTab text='Add Draught' to='/draughts' />
             <Pressable onPress={handleLogout} >
@@ -32,7 +32,7 @@ const AppBarContainer = ({ handleLogout, user }) => {
             </Pressable>
           </>
         }
-        {true &&
+        {!user &&
           <>
             <AppBarTab text='Sign In' to='/signin' />
             <AppBarTab text='Sign Up' to='/signup' />

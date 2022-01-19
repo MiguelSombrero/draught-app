@@ -1,10 +1,8 @@
 import React from 'react';
 import { useHistory } from "react-router-dom";
-import useSignIn from '../../hooks/useSignIn';
 import SignInContainer from './SignInContainer';
 
-const SignIn = () => {
-  const { signIn } = useSignIn();
+const SignIn = ({ signIn }) => {
   let history = useHistory();
 
   const onSubmit = async (values) => {
