@@ -15,10 +15,6 @@ const styles = StyleSheet.create({
 });
 
 const AppBarContainer = ({ handleLogout, user }) => {
-
-  console.log("käyttäjä on");
-  console.log(user);
-
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
@@ -27,6 +23,7 @@ const AppBarContainer = ({ handleLogout, user }) => {
         {user &&
           <>
             <AppBarTab text='Add Draught' to='/draughts' />
+            <AppBarTab text='Stats' to='/stats' />
             <Pressable onPress={handleLogout} >
               <Text fontWeight='bold' color='textSecondary' style={{ padding: 10 }} >Logout</Text>
             </Pressable>

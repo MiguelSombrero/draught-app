@@ -8,6 +8,7 @@ import theme from '../theme';
 import FrontPage from './FrontPage';
 import AddDraught from './AddDraught';
 import useSignIn from '../hooks/useSignIn';
+import Stats from './Stats';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,6 +27,9 @@ const Main = () => {
       <Switch>
         <Route path="/draughts" exact>
           <AddDraught />
+        </Route>
+        <Route path="/stats" exact>
+          <Stats />
         </Route>
         <Route path="/signin" exact>
           <SignIn signIn={signIn} />
