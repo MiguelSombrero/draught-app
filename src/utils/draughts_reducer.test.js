@@ -45,8 +45,19 @@ describe('draughts reducer', ()=> {
   describe('reduce by date', () => {
     it('should reduce draughts by date', () => {
       const reducedDraughts = reducer.reduceByDate(draughts);
-      console.log(reducedDraughts);
       expect(reducedDraughts.length).toBe(2);
+    });
+
+    it('should count units correctly for one draught', () => {
+      const reducedDraughts = reducer.reduceByDate(draughts);
+      const oneDraught = reducedDraughts[1];
+      expect(oneDraught.units).toBe(1.72);
+    });
+
+    it('should count units correctly for many draughts', () => {
+      const reducedDraughts = reducer.reduceByDate(draughts);
+      const manyDraughts = reducedDraughts[0];
+      expect(manyDraughts.units).toBe(7.18);
     });
   });
 });
