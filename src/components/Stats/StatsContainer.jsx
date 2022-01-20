@@ -12,15 +12,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const StatsContainer = ({ draughts }) => {
-  if (!draughts) {
+const StatsContainer = ({ data }) => {
+  if (!data) {
     return null;
   }
-
-  const data = draughts.map(draught => {
-    const item = { date: draught.createdAt, abv: draught.abv };
-    return item;
-  });
 
   console.log(data);
 
