@@ -1,3 +1,4 @@
+import { parseDateTimeFromTimestamp } from './dateUtils';
 
 export const reduceUnitsByDate = (units) => {
   return Object.values(
@@ -6,7 +7,7 @@ export const reduceUnitsByDate = (units) => {
 };
 
 const dateReducer = (accumulation, unit) => {
-  const created = unit.date.substring(0, 10);
+  const created = parseDateTimeFromTimestamp(unit.date);
 
   const newUnits = unit.units;
 
