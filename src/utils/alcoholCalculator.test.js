@@ -1,6 +1,6 @@
 import AlcoholCalculator from "./alcoholCalculator";
 
-const calculator = new AlcoholCalculator();
+const calculator = new AlcoholCalculator({});
 
 describe('alcohol calculator', ()=> {
   describe('alcohol units', () => {

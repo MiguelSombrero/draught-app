@@ -8,7 +8,7 @@ import theme from '../theme';
 import FrontPage from './FrontPage';
 import AddDraught from './AddDraught';
 import useSignIn from '../hooks/useSignIn';
-import Stats from './Stats';
+import Charts from './Charts';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,8 +28,8 @@ const Main = () => {
         <Route path="/draughts" exact>
           <AddDraught />
         </Route>
-        <Route path="/stats" exact>
-          <Stats />
+        <Route path="/charts" exact>
+          <Charts />
         </Route>
         <Route path="/signin" exact>
           <SignIn signIn={signIn} />

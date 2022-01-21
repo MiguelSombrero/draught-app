@@ -23,7 +23,7 @@ const AppBarContainer = ({ handleLogout, user }) => {
         {user &&
           <>
             <AppBarTab text='Add Draught' to='/draughts' />
-            <AppBarTab text='Stats' to='/stats' />
+            <AppBarTab text='Charts' to='/charts' />
             <Pressable onPress={handleLogout} >
               <Text fontWeight='bold' color='textSecondary' style={{ padding: 10 }} >Logout</Text>
             </Pressable>
