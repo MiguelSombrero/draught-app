@@ -1,7 +1,8 @@
 import React from 'react';
 import BarChartContainer from './BarChartContainer';
+import BarChartWeekday from './BarChartWeekday';
 import useDraughts from '../../hooks/useDraughts';
-import { reduceUnitsByDate } from '../../utils/reduceFunctions';
+import { reduceUnitsByDate, reduceUnitsByWeekday } from '../../utils/reduceFunctions';
 import { filterUnitsForLast7Days, filterUnitsForLastMonth } from '../../utils/filterFunctions';
 import { mapDraughtsToUnits } from '../../utils/mapFunctions';
 import { ScrollView, StyleSheet } from 'react-native';
@@ -28,9 +29,11 @@ const Charts = () => {
 
   const unitsByDate = reduceUnitsByDate(units);
 
-  const unitsLast7Days = filterUnitsForLast7Days(unitsByDate);
+  const unitsByWeekday = reduceUnitsByWeekday(units);
 
   const unitsLastMonth = filterUnitsForLastMonth(unitsByDate);
+
+  const unitsLast7Days = filterUnitsForLast7Days(unitsLastMonth);
 
   return (
     <ScrollView style={styles.container}>
@@ -50,6 +53,9 @@ const Charts = () => {
         yLabel="units"
         xAxisText="consumed"
         yAxisText="alcohol units"
+      />
+      <BarChartWeekday
+        data={unitsByWeekday}
       />
     </ScrollView>
   );
