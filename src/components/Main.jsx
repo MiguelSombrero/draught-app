@@ -1,14 +1,11 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Route, Switch, Redirect } from 'react-router-native';
 import AppBar from './AppBar';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import theme from '../theme';
-import FrontPage from './FrontPage';
-import AddDraught from './AddDraught';
 import useSignIn from '../hooks/useSignIn';
-import Charts from './Charts';
+import BottomBar from './BottomBar';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,31 +16,21 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
-  const { user, signIn, signOut } = useSignIn();
+  const { user, loading, signIn, signOut } = useSignIn();
 
-  return (
+  const anonymousView = () => 
     <View style={styles.container}>
-      <AppBar user={user} signOut={signOut} />
-      <Switch>
-        <Route path="/draughts" exact>
-          <AddDraught />
-        </Route>
-        <Route path="/charts" exact>
-          <Charts />
-        </Route>
-        <Route path="/signin" exact>
-          <SignIn signIn={signIn} />
-        </Route>
-        <Route path="/signup" exact>
-          <SignUp />
-        </Route>
-        <Route path="/" exact>
-          <FrontPage />
-        </Route>
-        <Redirect to="/" />
-      </Switch>
-    </View>
-  );
+      <AppBar />
+      <SignIn signIn={signIn} loading={loading} />
+    </View>;
+
+  const userView = () => 
+    <View style={styles.container}>
+      <AppBar />
+      <BottomBar signOut={signOut} />
+    </View>;
+
+  return user ? userView() : anonymousView();
 };
 
 export default Main;

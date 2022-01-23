@@ -37,7 +37,7 @@ const Charts = () => {
 
   return (
     <ScrollView style={styles.container}>
-      <Text fontSize='subheading' fontWeight='bold' >Statictics of alcohol usage</Text>
+      <Text fontSize='subheading' fontWeight='bold' >Statictics of your alcohol usage</Text>
       <BarChartContainer
         data={unitsLast7Days}
         text="Alcohol consumption last seven days"
@@ -56,6 +56,13 @@ const Charts = () => {
       />
       <BarChartWeekday
         data={unitsByWeekday}
+        text="Alcohol consumption by weekday"
+        y={(d) => d.units}
+      />
+      <BarChartWeekday
+        data={unitsByWeekday}
+        text="Alcohol consumption average by weekday"
+        y={(d) => d.units / d.count}
       />
     </ScrollView>
   );

@@ -30,8 +30,8 @@ const weekdayReducer = (accumulation, unit) => {
   const newUnits = unit.units;
 
   accumulation[weekday] = accumulation[weekday]
-    ? { date: weekday, units: accumulation[weekday].units + newUnits }
-    : { date: weekday, units: newUnits };
+    ? { date: weekday, units: accumulation[weekday].units + newUnits, count: accumulation[weekday].count + 1 }
+    : { date: weekday, units: newUnits, count: 1 };
 
   return accumulation;
 };

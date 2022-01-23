@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Button, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import FormikTextInput from '../FormikTextInput';
+import Button from '../Button';
 
 import theme from '../../theme';
 
@@ -11,18 +12,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.colors.mainBackground,
     marginBottom: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
   },
 });
 
-const SignUpForm = ({ onSubmit }) => {
+const SignUpForm = ({ onSubmit, loading }) => {
   return (
     <View style={styles.container}>
       <FormikTextInput
@@ -43,7 +36,8 @@ const SignUpForm = ({ onSubmit }) => {
       />
       <Button
         onPress={onSubmit}
-        title="Sign Up"
+        loading={loading}
+        text="Sign Up"
         testID='signUpButton'
       />
     </View>

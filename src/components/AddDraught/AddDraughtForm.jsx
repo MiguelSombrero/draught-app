@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, Button } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import Button from '../Button';
 import FormikTextInput from '../FormikTextInput';
 
 import theme from '../../theme';
@@ -11,18 +12,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.colors.mainBackground,
     marginBottom: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.23,
-    shadowRadius: 2.62,
-    elevation: 4,
   },
 });
 
-const AddDraughtForm = ({ onSubmit }) => {
+const AddDraughtForm = ({ onSubmit, loading }) => {
   return (
     <View style={styles.container}>
       <FormikTextInput
@@ -44,7 +37,8 @@ const AddDraughtForm = ({ onSubmit }) => {
       />
       <Button
         onPress={onSubmit}
-        title="Add Draught"
+        loading={loading}
+        text="Add Draught"
         testID='addDraughtButton'
       />
     </View>

@@ -1,17 +1,15 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
+import { Appbar } from 'react-native-paper';
 
-import AppBarContainer from './AppBarContainer';
-
-const AppBar = ({ user, signOut }) => {
-  let history = useHistory();
-
-  const handleLogout = async () => {
-    await signOut();
-    history.push("/");
-  };
+const AppBar = () => {
+  const handleSearch = () => console.log('Searching');
   
-  return <AppBarContainer user={user} handleLogout={handleLogout} />;
+  return (
+    <Appbar.Header>
+      <Appbar.Content title="Draught App" />
+      <Appbar.Action icon="magnify" onPress={handleSearch} />
+    </Appbar.Header>
+  );
 };
 
 export default AppBar;

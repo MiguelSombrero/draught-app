@@ -3,7 +3,7 @@ import useUsers from '../../hooks/useUsers';
 import SignUpContainer from './SignUpContainer';
 
 const SignUp = () => {
-  const { createUser } = useUsers();
+  const { loading, createUser } = useUsers();
 
   const onSubmit = async (values) => {
     try {
@@ -13,7 +13,7 @@ const SignUp = () => {
     }
   };
 
-  return <SignUpContainer onSubmit={onSubmit} />;
+  return <SignUpContainer onSubmit={onSubmit} loading={loading} />;
 };
 
 export default SignUp;

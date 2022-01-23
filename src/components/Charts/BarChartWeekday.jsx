@@ -12,12 +12,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const BarChartWeekday = ({ data }) => {
+const BarChartWeekday = ({ data, text, y }) => {
   return (
     <View style={styles.container}>
       <VictoryChart width={350} theme={VictoryTheme.material}>
         <VictoryLabel
-          text="Alcohol consumption by weekday"
+          text={text}
           x={180}
           y={30}
           textAnchor="middle"
@@ -25,10 +25,10 @@ const BarChartWeekday = ({ data }) => {
         <VictoryBar
           data={data}
           x="date"
-          y="units"
+          y={y}
           alignment='middle'
           categories={{
-            x: ["sun", "mon", "tue", "wed", "thu", "fri", "sat"]
+            x: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
           }}
         />
         <VictoryAxis

@@ -4,7 +4,7 @@ import useDraughts from '../../hooks/useDraughts';
 import AddDraughtContainer from './AddDraughtContainer';
 
 const AddDraught = () => {
-  const { addDraught } = useDraughts();
+  const { loading, addDraught } = useDraughts();
   let history = useHistory();
 
   const onSubmit = async (values) => {
@@ -22,7 +22,7 @@ const AddDraught = () => {
     }
   };
 
-  return <AddDraughtContainer onSubmit={onSubmit} />;
+  return <AddDraughtContainer onSubmit={onSubmit} loading={loading} />;
 };
 
 export default AddDraught;

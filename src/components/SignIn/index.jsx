@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from "react-router-dom";
 import SignInContainer from './SignInContainer';
 
-const SignIn = ({ signIn }) => {
+const SignIn = ({ signIn, loading }) => {
   let history = useHistory();
 
   const onSubmit = async (values) => {
@@ -14,7 +14,7 @@ const SignIn = ({ signIn }) => {
     }
   };
 
-  return <SignInContainer onSubmit={onSubmit} />;
+  return <SignInContainer onSubmit={onSubmit} loading={loading} />;
 };
 
 export default SignIn;

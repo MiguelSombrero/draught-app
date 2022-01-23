@@ -27,14 +27,14 @@ const validationSchema = yup.object().shape({
     .required('Volume is required'),
 });
 
-const AddDraughtContainer = ({ onSubmit }) => {
+const AddDraughtContainer = ({ onSubmit, loading }) => {
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}
     >
-      {({ handleSubmit }) => <AddDraughtForm onSubmit={handleSubmit} />}
+      {({ handleSubmit }) => <AddDraughtForm onSubmit={handleSubmit} loading={loading} />}
     </Formik>
   );
 };
