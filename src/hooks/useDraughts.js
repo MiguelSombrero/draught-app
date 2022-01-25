@@ -49,7 +49,12 @@ const useDraughts = () => {
   };
 
   useEffect(() => {
-    fetchDraughts();
+    console.log("Lisättiin draught useEffect");
+    try {
+      fetchDraughts();
+    } catch (e) {
+      console.log(e);
+    }
   }, []);
 
   return { draughts, loading, fetchDraughts, addDraught };

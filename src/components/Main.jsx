@@ -6,6 +6,8 @@ import SignUp from './SignUp';
 import theme from '../theme';
 import useSignIn from '../hooks/useSignIn';
 import BottomBar from './BottomBar';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,19 +17,29 @@ const styles = StyleSheet.create({
   },
 });
 
+const Stack = createNativeStackNavigator();
+
 const Main = () => {
   const { user, loading, signIn, signOut } = useSignIn();
 
   const anonymousView = () => 
     <View style={styles.container}>
-      <AppBar />
-      <SignIn signIn={signIn} loading={loading} />
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Sign In'>
+          <Stack.Screen name="Sign In">
+            {(props) => <SignIn {...props} signIn={signIn} loading={loading} />}
+          </Stack.Screen>
+          <Stack.Screen name="Sign Up" component={SignUp} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </View>;
 
   const userView = () => 
     <View style={styles.container}>
-      <AppBar />
-      <BottomBar signOut={signOut} />
+      <NavigationContainer>
+        <AppBar />
+        <BottomBar signOut={signOut} />
+      </NavigationContainer>
     </View>;
 
   return user ? userView() : anonymousView();

@@ -1,7 +1,6 @@
 import React from 'react';
 import BarChartContainer from './BarChartContainer';
 import BarChartWeekday from './BarChartWeekday';
-import useDraughts from '../../hooks/useDraughts';
 import { reduceUnitsByDate, reduceUnitsByWeekday } from '../../utils/reduceFunctions';
 import { filterUnitsForLast7Days, filterUnitsForLastMonth } from '../../utils/filterFunctions';
 import { mapDraughtsToUnits } from '../../utils/mapFunctions';
@@ -18,9 +17,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Charts = () => {
-  const { draughts } = useDraughts();
-
+const Charts = ({ draughts }) => {
   if (!draughts) {
     return null;
   }

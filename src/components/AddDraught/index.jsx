@@ -1,11 +1,7 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
-import useDraughts from '../../hooks/useDraughts';
 import AddDraughtContainer from './AddDraughtContainer';
 
-const AddDraught = () => {
-  const { loading, addDraught } = useDraughts();
-  let history = useHistory();
+const AddDraught = ({ loading, addDraught, navigation }) => {
 
   const onSubmit = async (values) => {
     try {
@@ -16,7 +12,7 @@ const AddDraught = () => {
       };
 
       await addDraught(draught);
-      history.push('/');
+      navigation.navigate('Stats');
     } catch (e) {
       console.log(e);
     }

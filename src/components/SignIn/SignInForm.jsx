@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Pressable } from 'react-native';
 import FormikTextInput from '../FormikTextInput';
 import Button from '../Button';
-
+import Text from '../Text';
 import theme from '../../theme';
 
 const styles = StyleSheet.create({
@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const SignInForm = ({ onSubmit, loading }) => {
+const SignInForm = ({ onSubmit, loading, navigation }) => {
   return (
     <View style={styles.container}>
       <FormikTextInput
@@ -35,6 +35,9 @@ const SignInForm = ({ onSubmit, loading }) => {
         text="Sign In"
         testID='signInButton'
       />
+      <Pressable onPress={() => navigation.navigate('Sign Up')}>
+        <Text>Or create an account</Text>
+      </Pressable>
     </View>
   );
 };
