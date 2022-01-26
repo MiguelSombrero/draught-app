@@ -1,4 +1,4 @@
-import { parseDateTimeFromTimestamp, getweekday } from './dateUtils';
+import { parseDateFromTimestamp, getweekday } from './dateUtils';
 
 export const reduceUnitsByDate = (units) => {
   return Object.values(
@@ -13,7 +13,7 @@ export const reduceUnitsByWeekday = (units) => {
 };
 
 const dateReducer = (accumulation, unit) => {
-  const created = parseDateTimeFromTimestamp(unit.date);
+  const created = parseDateFromTimestamp(unit.date);
 
   const newUnits = unit.units;
 

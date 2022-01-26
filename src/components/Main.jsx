@@ -23,26 +23,26 @@ const Main = () => {
   const { user, loading, signIn, signOut } = useSignIn();
 
   const anonymousView = () => 
-    <View style={styles.container}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName='Sign In'>
-          <Stack.Screen name="Sign In">
-            {(props) => <SignIn {...props} signIn={signIn} loading={loading} />}
-          </Stack.Screen>
-          <Stack.Screen name="Sign Up" component={SignUp} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </View>;
+    <Stack.Navigator initialRouteName='Sign In'>
+      <Stack.Screen name="Sign In">
+        {(props) => <SignIn {...props} signIn={signIn} loading={loading} />}
+      </Stack.Screen>
+      <Stack.Screen name="Sign Up" component={SignUp} />
+    </Stack.Navigator>;
 
   const userView = () => 
+    <>
+      <AppBar />
+      <BottomBar signOut={signOut} />
+    </>;
+
+  return (
     <View style={styles.container}>
       <NavigationContainer>
-        <AppBar />
-        <BottomBar signOut={signOut} />
+        {user ? userView() : anonymousView()}
       </NavigationContainer>
-    </View>;
-
-  return user ? userView() : anonymousView();
+    </View>
+  );
 };
 
 export default Main;

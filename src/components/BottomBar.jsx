@@ -17,13 +17,13 @@ function BottomBar({ signOut }) {
     <Tab.Navigator initialRouteName="Home">
       <Tab.Screen 
         name="Home"
-        component={FrontPage}
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
           ),
         }}
-      />
+      >{(props) => <FrontPage draughts={draughts} {...props} />}
+      </Tab.Screen>
       <Tab.Screen
         name="Add Draught"
         options={{

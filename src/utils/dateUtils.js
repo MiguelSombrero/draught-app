@@ -1,11 +1,15 @@
 import moment from 'moment';
 
-export const parseDateTimeFromTimestamp = (timestamp) => {
+export const parseDateFromTimestamp = (timestamp) => {
   return timestamp.substring(0, 10);
 };
 
 export const getweekday = (dateString) => {
   return moment(dateString).day();
+};
+
+export const getEndOfYesterday = () => {
+  return moment(getDateXDaysAgo(1)).endOf('day').toDate();
 };
 
 export const getDateXDaysAgo = (days) => {
