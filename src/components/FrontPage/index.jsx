@@ -1,17 +1,9 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import Text from '../Text';
-import theme from '../../theme';
+import FrontPageContainer from './FrontPageContainer';
 import { filterDraughtsFromYesterday } from '../../utils/filterFunctions';
 import { mapDraughtsToUnits } from '../../utils/mapFunctions';
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: theme.colors.mainBackground,
-    flexGrow: 1,
-    flexShrink: 1,
-  },
-});
+import { reduceUnitsByDate, reduceDraughtsByMaximumCreated } from '../../utils/reduceFunctions';
+import { getDaysBetweenTwoDates } from '../../utils/dateUtils';
 
 const FrontPage = ({ draughts }) => {
   if (!draughts) {
@@ -20,15 +12,17 @@ const FrontPage = ({ draughts }) => {
 
   const draughtsToday = filterDraughtsFromYesterday(draughts);
 
+  const latestDraught = reduceDraughtsByMaximumCreated(draughts);
+
+  const latestDraughtConsumed = getDaysBetweenTwoDates(latestDraught.createdAt, new Date().toISOString());
+
+  console.log(new Date().toISOString());
+  console.log(latestDraught.createdAt);
   const unitsToday = mapDraughtsToUnits(draughtsToday);
 
-  console.log(unitsToday);
+  const unitsTotalToday = reduceUnitsByDate(unitsToday);
 
-  return (
-    <View style={styles.container}>
-      <Text>front</Text>
-    </View>
-  );
+  return <FrontPageContainer latestDraughtConsumed={latestDraughtConsumed} latestDraught={latestDraught} units={unitsTotalToday.units || 0} />;
 };
 
 export default FrontPage;

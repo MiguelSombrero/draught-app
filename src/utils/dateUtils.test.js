@@ -1,4 +1,9 @@
-import { parseDateFromTimestamp, getweekday, getEndOfYesterday } from './dateUtils';
+import {
+  parseDateFromTimestamp,
+  getweekday,
+  getEndOfYesterday,
+  getDaysBetweenTwoDates
+} from './dateUtils';
 
 describe('date utils', ()=> {
   describe('parse date from timestamp', () => {
@@ -22,6 +27,22 @@ describe('date utils', ()=> {
       /* const yesterdayDate = parseDateFromTimestamp(new Date().toISOString());
       const yesterday = getEndOfYesterday().toISOString();
       expect(yesterday).toBe(yesterdayDate + "T21:59:59.999Z"); */
+    });
+  });
+
+  describe('get days between two dates', () => {
+    it('should return correct days when dates are not the same day', () => {
+      const firstDate = "2022-01-19T11:11:19.410Z";
+      const secondDate = "2022-01-20T08:11:19.410Z";
+      const days = getDaysBetweenTwoDates(firstDate, secondDate);
+      expect(days).toBe(1);
+    });
+
+    it('should return correct days when dates are the same day', () => {
+      const firstDate = "2022-01-20T11:11:19.410Z";
+      const secondDate = "2022-01-20T08:11:19.410Z";
+      const days = getDaysBetweenTwoDates(firstDate, secondDate);
+      expect(days).toBe(0);
     });
   });
 });

@@ -19,3 +19,11 @@ export const getDateXDaysAgo = (days) => {
 export const getDateXMonthsAgo = (months) => {
   return moment(new Date()).subtract(months, 'month').toDate();
 };
+
+export const getDaysBetweenTwoDates = (first, second) => {
+  return Math.abs(
+    moment(first).startOf('day').diff(
+      moment(second).startOf('day'),
+      'days')
+  );
+};

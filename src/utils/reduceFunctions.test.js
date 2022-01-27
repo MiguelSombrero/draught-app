@@ -1,4 +1,8 @@
-import { reduceUnitsByDate, reduceUnitsByWeekday } from "./reduceFunctions";
+import {
+  reduceUnitsByDate,
+  reduceUnitsByWeekday,
+  reduceDraughtsByMaximumCreated
+} from "./reduceFunctions";
 
 describe('map and reduce functions', ()=> {
   describe('reduce units by date', () => {
@@ -84,6 +88,36 @@ describe('map and reduce functions', ()=> {
       const manyUnits = reducedUnits[1];
       expect(manyUnits.units).toBe(11);
       expect(manyUnits.count).toBe(3);
+    });
+  });
+
+  describe('reduce draughts by maximum created', () => {
+    const draughts = [
+      {
+        id: 1,
+        createdAt: "2022-01-05T08:11:19.410Z"
+      },
+      {
+        id: 2,
+        createdAt: "2022-01-06T08:11:19.410Z"
+      },
+      {
+        id: 3,
+        createdAt: "2022-01-18T12:11:19.410Z"
+      },
+      {
+        id: 4,
+        createdAt: "2020-01-15T08:43:19.410Z"
+      },
+      {
+        id: 5,
+        createdAt: "2022-01-18T08:11:19.410Z"
+      },
+    ];
+
+    it('should return draught with greatest createdAt', () => {
+      const maximumDraught = reduceDraughtsByMaximumCreated(draughts);
+      expect(maximumDraught.id).toBe(3);
     });
   });
 });

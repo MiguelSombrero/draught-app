@@ -12,6 +12,12 @@ export const reduceUnitsByWeekday = (units) => {
   );
 };
 
+export const reduceDraughtsByMaximumCreated = (draughts) => {
+  return draughts.reduce((previous, current) =>
+    (previous.createdAt > current.createdAt) ? previous : current
+  );
+};
+
 const dateReducer = (accumulation, unit) => {
   const created = parseDateFromTimestamp(unit.date);
 
