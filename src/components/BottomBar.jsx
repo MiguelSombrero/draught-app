@@ -11,7 +11,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const Tab = createMaterialBottomTabNavigator();
 
 function BottomBar({ signOut }) {
-  const { draughts, loading, addDraught } = useDraughts();
+  const { draughts } = useDraughts();
 
   return (
     <Tab.Navigator initialRouteName="Home">
@@ -31,7 +31,7 @@ function BottomBar({ signOut }) {
             <MaterialCommunityIcons name="beer" color={color} size={26} />
           ),
         }}
-      >{(props) => <AddDraught addDraught={addDraught} loading={loading} {...props} />}
+      >{(props) => <AddDraught {...props} />}
       </Tab.Screen>
       <Tab.Screen
         name="Stats"

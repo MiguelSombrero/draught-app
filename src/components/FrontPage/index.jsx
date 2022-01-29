@@ -16,8 +16,6 @@ const FrontPage = ({ draughts }) => {
 
   const latestDraughtConsumed = getDaysBetweenTwoDates(latestDraught.createdAt, new Date().toISOString());
 
-  console.log(new Date().toISOString());
-  console.log(latestDraught.createdAt);
   const unitsToday = mapDraughtsToUnits(draughtsToday);
 
   const unitsTotalToday = reduceUnitsByDate(unitsToday);

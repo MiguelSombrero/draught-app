@@ -12,11 +12,11 @@ const styles = StyleSheet.create({
   },
 });
 
-const Add = () => (
+const Add = ({ onPress }) => (
   <FAB
     style={styles.fab}
     icon="plus"
-    onPress={() => console.log('Pressed')}
+    onPress={onPress}
   />
 );
 

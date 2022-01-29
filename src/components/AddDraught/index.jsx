@@ -1,7 +1,9 @@
 import React from 'react';
 import AddDraughtContainer from './AddDraughtContainer';
+import useDraughts from '../../hooks/useDraughts';
 
-const AddDraught = ({ loading, addDraught, navigation }) => {
+const AddDraught = ({ navigation }) => {
+  const { loading, addDraught } = useDraughts();
 
   const onSubmit = async (values) => {
     try {
